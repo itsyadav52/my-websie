@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Surprise for You ❤️</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe6e9 0%, #ffb6c1 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Floating background hearts */
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: rgba(255, 105, 180, 0.6);
+            animation: float 6s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+
+        .card-container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 35px 20px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
+            text-align: center;
+            border: 2px solid #fff;
+        }
+
+        /* Hide layers by default */
+        .layer {
+            display: none;
+            animation: fadeIn 0.8s ease-in-out forwards;
+        }
+
+        /* Show active layer */
+        .layer.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1, h2 {
+            color: #d63384;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Sticker animation styling */
+        .sticker-wrapper {
+            width: 140px;
+            height: 140px;
+            margin: 10px auto 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        .sticker {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.1));
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Buttons styling */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b8b, #ff8e53);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(255, 107, 139, 0.4);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 107, 139, 0.6);
+        }
+
+        /* Final photo container */
+        .photo-frame {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            margin: 20px auto;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 25px rgba(214, 51, 132, 0.25);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        audio {
+            margin-top: 15px;
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        
+        <!-- LAYER 1 -->
+        <div class="layer active" id="layer1">
+            <div class="sticker-wrapper">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdWJ2ZzRwMHRucDFscWVpZm93bmE4ZGZ0MmprNGZ5OXkydHVxb3c2aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/vFKqnCdLPNOKc/giphy.gif" class="sticker" alt="Cute Teddy">
+            </div>
+            <h1>Hello sweetheart ! ✨</h1>
+            <p>I want to tell you something. Are you ready to know ?</p>
+            <button class="btn" onclick="nextLayer(2)">Tap to know❤️</button>
+        </div>
+
+        <!-- LAYER 2 (FIXED WORKING STICKER) -->
+        <div class="layer" id="layer2">
+            <div class="sticker-wrapper">
+                <img src="https://media.giphy.com/media/33OrjzUFwkwEg/giphy.gif" class="sticker" alt="Cute Rose Bear" onerror="this.onerror=null; this.src='https://media.giphy.com/media/LpDmM2W993fJS/giphy.gif';">
+            </div>
+            <h2>Exciting to tell you Jaanu.....</h2>
+            <p>You are the most beautiful girl i have ever met. I am so happy to have you in my life. And.....</p>
+            <button class="btn" onclick="nextLayer(3)">Keep Going 💫</button>
+        </div>
+
+        <!-- LAYER 3 -->
+        <div class="layer" id="layer3">
+            <div class="sticker-wrapper">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ3RmbmsyeXVxY2dlenJia29zNXlsMnZjcjgwOTN5OTlhZjljdHBoOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/MDJ9IbxxvDUQM/giphy.gif" class="sticker" alt="Hugging Bears">
+            </div>
+            <h2>Uumaahhh......</h2>
+            <p>And...I wanted to say that ..... the eyes are the windows to the soul... and yours are my absolute favorite place to get lost in.</p>
+            <button class="btn" onclick="nextLayer(4)">👉🏻🤌🏻💖</button>
+        </div>
+
+        <!-- LAYER 4 (FINAL LAYER: EYE PHOTO + AUTOMATIC TERE NAINA SONG) -->
+        <div class="layer" id="layer4">
+            <h2>Tere Naina... ❤️</h2>
+            
+            <div class="photo-frame">
+                <!-- Temporary eyes photo (Replace src with 'eyes.jpg' when ready) -->
+                <img src="C:\Users\hp\OneDrive\Desktop\My Surprise Website Folder\eyes.jpg">
+            </div>
+
+            <p>I love you more every single day meri rasmalai !</p>
+
+            <!-- Audio Player -->
+            <audio id="bg-music" controls loop preload="auto">
+                <source src="C:\Users\hp\OneDrive\Desktop\My Surprise Website Folder\tere_naina.mp3" type="audio/mpeg">
+                Your browser does not support audio.
+            </audio>
+        </div>
+
+    </div>
+
+    <script>
+        const music = document.getElementById('bg-music');
+
+        function nextLayer(layerNumber) {
+            // Unlock audio permissions on user interaction
+            if (music) {
+                music.play().then(() => {
+                    if (layerNumber !== 4) {
+                        music.pause();
+                        music.currentTime = 0;
+                    }
+                }).catch(err => console.log("Audio waiting for user click..."));
+            }
+
+            const layers = document.querySelectorAll('.layer');
+            layers.forEach(layer => layer.classList.remove('active'));
+
+            const targetLayer = document.getElementById('layer' + layerNumber);
+            if (targetLayer) {
+                targetLayer.classList.add('active');
+            }
+
+            // Automatically play when landing on Layer 4
+            if (layerNumber === 4 && music) {
+                music.play().catch(e => console.log("Playback error: ", e));
+            }
+        }
+
+        // Generate floating background hearts
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(heart);
+            }
+        }
+        createHearts();
+    </script>
+</body>
+</html>
